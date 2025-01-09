@@ -1,5 +1,5 @@
-// Inicializa EmailJS con tu User ID
-emailjs.init("TU_USER_ID"); // Reemplaza con tu User ID de EmailJS
+   // Inicializa EmailJS con tu User ID
+emailjs.init("-HaPf9WXQE3I-a2ss"); // Reemplaza con tu User ID de EmailJS
 
 // Selecciona el formulario
 const form = document.getElementById("contact-form");
@@ -16,7 +16,7 @@ form.addEventListener("submit", function (event) {
   const mensaje = document.getElementById("mensaje").value;
 
   // Envía los datos a través de EmailJS
-  emailjs.send("TU_SERVICE_ID", "TU_TEMPLATE_ID", {
+  emailjs.send("service_kc7449h", "template_x4q89a9", {
     nombre: nombre,
     correo: correo,
     telefono: telefono,
@@ -31,3 +31,4 @@ form.addEventListener("submit", function (event) {
     alert("Error al enviar el mensaje: " + error.text);
   });
 });
+ 
