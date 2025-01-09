@@ -18,6 +18,15 @@
     transform: scale(1.1);
 }
     
+/* Hacer que el navbar sea fijo */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Asegura que el navbar esté siempre por encima de otros elementos */
+}
+
     /* Estilo para el navbar */
     .navbar {
         background-color: #333;
@@ -41,6 +50,7 @@
   
       /* Agregar margen superior a la página */
       body {
+        padding-top: 80px; /* Añadir espacio para evitar que el contenido quede oculto debajo del navbar */
         margin-top: 60px;
         font-family: 'Arial', sans-serif;
       }
