@@ -1,34 +1,27 @@
-   // Inicializa EmailJS con tu User ID
-emailjs.init("-HaPf9WXQE3I-a2ss"); // Reemplaza con tu User ID de EmailJS
+// Inicializar EmailJS
+(function() {
+    emailjs.init('IU7hlZkvVGEZbBVJy'); // Reemplaza TU_USER_ID con tu User ID de EmailJS
+})();
 
-// Selecciona el formulario
-const form = document.getElementById("contact-form");
+// Manejo del formulario
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevenir el envío por defecto
 
-// Escucha el evento de envío del formulario
-form.addEventListener("submit", function (event) {
-  event.preventDefault(); // Evita el envío predeterminado del formulario
+    // Recoger los valores del formulario
+    const formData = {
+        nombre: document.getElementById('nombre').value,
+        correo: document.getElementById('correo').value,
+        telefono: document.getElementById('telefono').value,
+        direccion: document.getElementById('direccion').value,
+        mensaje: document.getElementById('mensaje').value
+    };
 
-  // Obtén los datos del formulario
-  const nombre = document.getElementById("nombre").value;
-  const correo = document.getElementById("correo").value;
-  const telefono = document.getElementById("telefono").value;
-  const direccion = document.getElementById("direccion").value;
-  const mensaje = document.getElementById("mensaje").value;
-
-  // Envía los datos a través de EmailJS
-  emailjs.send("service_kc7449h", "template_x4q89a9", {
-    nombre: nombre,
-    correo: correo,
-    telefono: telefono,
-    direccion: direccion,
-    mensaje: mensaje,
-  })
-  .then(function(response) {
-    alert("Mensaje enviado con éxito!");
-    form.reset(); // Limpia el formulario
-  })
-  .catch(function(error) {
-    alert("Error al enviar el mensaje: " + error.text);
-  });
+    // Enviar datos con EmailJS
+    emailjs.send('service_3t649lo', 'template_x4q89a9', formData)
+        .then(function(response) {
+            alert('¡Correo enviado exitosamente!');
+            document.getElementById('contact-form').reset(); // Limpiar formulario
+        }, function(error) {
+            alert('Error al enviar el correo: ' + error.text);
+        });
 });
- 
