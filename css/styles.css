@@ -27,45 +27,100 @@
   z-index: 1000; /* Asegura que el navbar esté siempre por encima de otros elementos */
 }
 
-    /* Estilo para el navbar */
-    .navbar {
-        background-color: #333;
-      }
+/* Estilo inicial del logo */
+.navbar-brand {
+  opacity: 0; /* Empieza invisible */
+  transform: translateY(-30px); /* Empuja el logo hacia arriba */
+  font-weight: bold; /* Para que se vea más prominente */
+  font-size: 2.5rem; /* Tamaño del texto */
+  text-transform: uppercase; /* Opcional, si quieres todo en mayúsculas */
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out; /* Transición suave */
+}
+
+/* Animación de aparición y deslizamiento */
+@keyframes slideInLogo {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px); /* Empuja el logo hacia arriba */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Vuelve a su posición original */
+  }
+}
+
+/* Activar la animación al cargar */
+.navbar-brand.animateLogo {
+  animation: slideInLogo 1s ease-out forwards; /* Aparece suavemente con movimiento */
+}
+
+/* Efecto de hover para el logo */
+.navbar-brand:hover {
+  color: #f39c12; /* Cambia el color al pasar el puntero */
+  transform: translateY(-5px); /* Desplazamiento hacia arriba */
+}
+
   
-      .navbar-brand {
-        color: #000000 !important;
-        font-weight: bold;
-        font-size: 2rem;
-      }
-  
-      .navbar-nav .nav-link {
-        color: #333 !important;
-        font-size: 1.1rem;
-        margin-left: 20px;
-      }
-  
-      .navbar-nav .nav-link:hover {
-        color: #0d6efd !important;
-      }
-  
-      /* Agregar margen superior a la página */
-      body {
-        padding-top: 80px; /* Añadir espacio para evitar que el contenido quede oculto debajo del navbar */
-        margin-top: 60px;
-        font-family: 'Arial', sans-serif;
-      }
-  
-      /* Cambiar color del fondo en el colapso de la navbar */
-      .navbar-toggler-icon {
-        background-color: #0d6efd;
-      }
+/* Estilos iniciales del navbar */
+.navbar-nav .nav-item .nav-link {
+  position: relative; /* Necesario para colocar el pseudo-elemento */
+  padding: 10px 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0; /* Hacemos que los enlaces empiecen invisibles */
+  transform: translateY(20px); /* Empujamos los elementos hacia abajo */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Animación de aparición con movimiento */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Empujamos los elementos hacia abajo */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Los elementos vuelven a su posición normal */
+  }
+}
+
+/* Clase que activa la animación */
+.navbar-nav .nav-item .nav-link.animate {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+/* Efecto de hover: Cambio de color y movimiento */
+.navbar-nav .nav-item .nav-link:hover {
+  color: #0d6efd; /* Color del texto al pasar el puntero */
+  transform: translateY(-5px); /* Movimiento hacia arriba */
+}
+
+/* Efecto de subrayado animado */
+.navbar-nav .nav-item .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #0d6efd; /* Color del subrayado */
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+/* Cuando el puntero está sobre el enlace, se expande el subrayado */
+.navbar-nav .nav-item .nav-link:hover::after {
+  width: 100%; /* Subraya todo el enlace */
+}
+
+
       /* Estilo para la sección héroe */
     .hero {
       background-image: url('https://cdn.euroinnova.edu.es/img/subidasEditor/server-2160321__340-1614223145.webp'); /* Cambia esta URL a la de tu imagen */
       background-size: cover;
       background-position: center;
       color: #fff;
-      height: 100vh; /* Altura completa de la ventana */
+      height: 80vh; /* Altura completa de la ventana */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -127,6 +182,8 @@
     margin-top: 10px;
     font-size: 1.1rem;
   }
+
+
 
    /* Estilo para la sección 'Nuestro Servicio' */
    .nuestro-servicio {
@@ -197,3 +254,59 @@
       .footer .social-icons a:hover {
         color: #0d6efd; /* Color dorado cuando el usuario pasa el mouse */
       }
+
+      
+
+
+      .clientes-seccion {
+        text-align: center;
+        padding: 50px 20px;
+        background-color: #f9f9f9;
+      }
+      
+      .clientes-seccion h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        color: #333;
+      }
+      
+      .clientes-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+      
+      .cliente {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 150px;
+        background-color: #ffffff; /* Fondo uniforme */
+        border: 1px solid #ddd; /* Borde para separar los logos */
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden; /* Asegura que los bordes redondeados afecten a la imagen */
+      }
+      
+      .cliente:hover {
+        transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+      }
+      
+      .cliente img {
+        max-width: 100%; /* Escala la imagen dentro del contenedor */
+        max-height: 100%; /* Asegura que la imagen no sobresalga */
+        object-fit: contain; /* Escala la imagen sin distorsionarla */
+      }
+      
+      .cliente a {
+        text-decoration: none;
+      }
+      
+      .cliente a:focus {
+        outline: 2px solid #007bff; /* Resalta el enlace al enfocarlo */
+      }
+      
