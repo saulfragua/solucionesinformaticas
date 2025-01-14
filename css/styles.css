@@ -311,87 +311,115 @@
         outline: 2px solid #007bff; /* Resalta el enlace al enfocarlo */
       }
 
-   /* Estilo general */
-   body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+  /* Estilo general */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #f0f4f8;
+    }
 
-/* Estilo para el título */
-.ubicacion {
-    text-align: center;
-    color: white;
-    font-size: 3rem;
-    padding: 30px 0;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.5), 
-        rgba(0, 0, 0, 0.5)
-    ), url('https://source.unsplash.com/1200x400/?landscape,city') no-repeat center center;
-    background-size: cover;
-    text-transform: uppercase;
-    margin: 0;
-}
-
-iframe {
-    width: 100%;
-    height: 450px;
-    border: 0;
-}
-
-/* Sidebar */
-.sidebar {
-    background-color: #f8f8f8;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Centrar todo el contenido dentro de la sidebar */
-}
-
-.sidebar h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.sidebar p {
-    margin: 10px 0;
-    line-height: 1.5;
-}
-
-.sidebar strong {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-.icon {
-    font-size: 1.5rem;
-    margin-right: 10px;
-}
-
-/* Responsivo con Bootstrap */
-@media (max-width: 768px) {
+    /* Estilo para el título */
     .ubicacion {
-        font-size: 2.5rem; /* Reducir tamaño de fuente */
-        padding: 20px 0; /* Reducir padding */
+        text-align: center;
+        color: white;
+        font-size: 3rem;
+        padding: 30px 0;
+        background: linear-gradient(
+            rgba(0, 0, 0, 0.5), 
+            rgba(0, 0, 0, 0.5)
+        ), url('https://source.unsplash.com/1200x400/?landscape,city') no-repeat center center;
+        background-size: cover;
+        text-transform: uppercase;
+        margin: 0;
     }
 
     iframe {
-        height: 300px; /* Reducir altura del mapa en móviles */
+        width: 100%;
+        height: 450px;
+        border: 0;
     }
 
+    /* Sidebar */
     .sidebar {
-        margin-top: 15px;
-        padding: 15px; /* Reducir padding */
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .sidebar:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
     .sidebar h2 {
-        font-size: 1.5rem; /* Reducir tamaño de título en sidebar */
+        color: #333;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+        animation: fadeIn 1s ease-in;
     }
 
     .sidebar p {
-        font-size: 0.9rem; /* Reducir tamaño de texto en sidebar */
+        margin: 10px 0;
+        line-height: 1.5;
+        font-size: 1.1rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease-in forwards;
     }
-}
+
+    .sidebar p:nth-child(1) { animation-delay: 0.3s; }
+    .sidebar p:nth-child(2) { animation-delay: 0.5s; }
+    .sidebar p:nth-child(3) { animation-delay: 0.7s; }
+    .sidebar p:nth-child(4) { animation-delay: 0.9s; }
+
+    .icon {
+        font-size: 1.8rem;
+        margin-right: 10px;
+        color: #5f6368;
+        transition: color 0.3s ease;
+    }
+
+    .sidebar p:hover .icon {
+        color: #007bff;
+    }
+
+    /* Animación para la aparición de los elementos */
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(10px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsivo con Bootstrap */
+    @media (max-width: 768px) {
+        .ubicacion {
+            font-size: 2.5rem;
+            padding: 20px 0;
+        }
+
+        iframe {
+            height: 300px;
+        }
+
+        .sidebar {
+            margin-top: 15px;
+            padding: 15px;
+        }
+
+        .sidebar h2 {
+            font-size: 1.5rem;
+        }
+
+        .sidebar p {
+            font-size: 1rem;
+        }
+    }
